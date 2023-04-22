@@ -1,0 +1,32 @@
+{% extends 'navbar.html' %} {% block body %}
+<div class="container-fluid">
+  <div class="p-4">
+    <h1>
+      Mostrar el promedio de la velocidad del viento, la temperatura máxima y
+      mínima de cada departamento.
+    </h1>
+  </div>
+</div>
+<div class="container p-2">
+  <table class="table table-borderless">
+    <thead>
+      <tr>
+        <th scope="col">Departamento</th>
+        <th scope="col">Promedio Velocidad</th>
+        <th scope="col">Temperatura Maxima</th>
+        <th scope="col">Temperatura Minima</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for data in data_max_min %}
+      <tr>
+        <td>{{ data.0 }}</td>
+        <td>{{ data.1 }}</td>
+        <td>{{ data.2 }}</td>
+        <td>{{ data.3 }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
