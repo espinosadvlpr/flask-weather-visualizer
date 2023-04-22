@@ -1,0 +1,29 @@
+{% extends 'navbar.html' %} {% block body %}
+<div class="container-fluid">
+  <div class="p-4">
+    <h1>
+      ¿Cuál es el promedio de la temperatura y la humedad para cada ciudad?
+    </h1>
+  </div>
+  <div class="container p-4">
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th scope="col">Departamento</th>
+          <th scope="col">Promedio Temperatura</th>
+          <th scope="col">Promedio Humedad</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for average in averages %}
+        <tr>
+          <td>{{ average.0 }}</td>
+          <td>{{ average.1 }}</td>
+          <td>{{ average.2 }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
