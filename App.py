@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_mysqldb import MySQL
 
 app = Flask(__name__)
@@ -10,7 +10,18 @@ mysql = MySQL(app)
 
 @app.route('/')
 def Index():
-    return 'hello world'
+    return render_template('index.html')
+
+@app.route('/first')
+def First():
+    cursor = mysql.connection.cursor()
+    query = """select departamento, 
+            round(sum(temperatura)/count(departamento),2) as temperatura, 
+            round(sum(humedad)/count(departamento),2) as humedad
+            from datos_meteorologicos group by 1;"""
+    cursor.execute(query)
+    data = cursor.fetchall()
+    return render_template('first.html', averages=data)
 
 if __name__ == "__main__":
     app.run(port=3000,debug=True)
