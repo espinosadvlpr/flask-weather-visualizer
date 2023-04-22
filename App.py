@@ -19,7 +19,7 @@ def Index():
 
 @app.route('/first')
 def First():
-    query = """select departamento, 
+    query = """select ciudad, 
             round(sum(temperatura)/count(departamento),2) as temperatura, 
             round(sum(humedad)/count(departamento),2) as humedad
             from datos_meteorologicos group by 1;"""
@@ -28,7 +28,7 @@ def First():
 
 @app.route('/second')
 def Second():
-    query = """select departamento,
+    query = """select ciudad,
             round(sum(velocidad_viento)/count(departamento),2),
             max(temperatura), min(temperatura)
             from datos_meteorologicos
