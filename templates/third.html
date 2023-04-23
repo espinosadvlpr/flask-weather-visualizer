@@ -1,0 +1,28 @@
+{% extends 'navbar.html' %} {% block body %}
+<div class="container-fluid">
+  <div class="p-4">
+    <h1>Selecciona una ciudad y una fecha para ver el pronostico del clima.</h1>
+  </div>
+  <form action="/third_info" method="POST">
+    <div class="container mt-5">
+      <select class="form-select" name="city">
+        <option selected>Selecciona ciudad...</option>
+        {% for city in cities %}
+        <option value="{{city.0}}">{{city.0}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="container mt-4">
+      <select class="form-select" name="date">
+        <option selected>Selecciona fecha...</option>
+        {% for date in dates %}
+        <option value="{{date.0}}">{{date.0}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="container mt-4">
+      <button type="submit" class="btn btn-dark">Revisar</button>
+    </div>
+  </form>
+</div>
+{% endblock %}
