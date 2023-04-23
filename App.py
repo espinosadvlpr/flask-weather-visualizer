@@ -80,6 +80,23 @@ def FourthChart():
         chart_title = variable.replace("_", " ").title()
     return render_template('fourth_chart.html',city=city,title=chart_title,labels=labels,values=values)
 
+def temperature_for_city(city):
+    query = f"""select temperatura
+            from datos_meteorologicos where ciudad = '{city}';"""
+    return database_query(query)
+
+@app.route('/fifth')
+def Fifth():
+    labels = list(range(1,80))
+    tunja = [row[0] for row in temperature_for_city('Tunja')]
+    bucaramanga =[row[0] for row in  temperature_for_city('Bucaramanga')]
+    barranquilla =[row[0] for row in  temperature_for_city('Barranquilla')]
+    bogota =[row[0] for row in  temperature_for_city('Bogotá')]
+    cartagena =[row[0] for row in  temperature_for_city('Cartagena')]
+    barranca =[row[0] for row in  temperature_for_city('Barranca')]
+    return render_template('fifth.html',labels=labels,tunja=tunja,bucaramanga=bucaramanga,
+                           barranquilla=barranquilla,bogota=bogota,
+                           cartagena=cartagena,barranca=barranca)
 
 if __name__ == "__main__":
     app.run(port=3000,debug=True)
