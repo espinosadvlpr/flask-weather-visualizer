@@ -60,5 +60,26 @@ def ThirdInfo():
         forecast = data[randint(0, 7)][1]
     return render_template('third_info.html',city=city,date=date,forecast=forecast,weather=data)
 
+@app.route('/fourth')
+def Fourth():
+    cities = """select ciudad from datos_meteorologicos
+            group by ciudad;"""
+    cities_data = database_query(cities)
+    return render_template('fourth.html',cities=cities_data)
+
+@app.route('/fourth_chart',methods=['POST'])
+def FourthChart():
+    if request.method == 'POST':
+        city = request.form['city']
+        variable = request.form['variable']
+        query = f"""select fecha, round(sum({variable})/count(fecha),2)
+                from datos_meteorologicos where ciudad = '{city}' group by 1;"""
+        data = database_query(query)
+        labels = [row[0] for row in data]
+        values = [row[1] for row in data]
+        chart_title = variable.replace("_", " ").title()
+    return render_template('fourth_chart.html',city=city,title=chart_title,labels=labels,values=values)
+
+
 if __name__ == "__main__":
     app.run(port=3000,debug=True)
