@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+from random import randint
+from flask import Flask, render_template, request
 from flask_mysqldb import MySQL
 
 app = Flask(__name__)
@@ -36,6 +37,28 @@ def Second():
             order by 3;"""
     data = database_query(query)
     return render_template('second.html', data_max_min=data)
+
+@app.route('/third')
+def Third():
+    cities = """select ciudad from datos_meteorologicos
+            group by ciudad;"""
+    dates = """select fecha from datos_meteorologicos
+            group by fecha;"""
+    cities_data = database_query(cities)
+    dates_data = database_query(dates)
+    return render_template('third.html',cities=cities_data, dates=dates_data)
+
+@app.route('/third_info',methods=['POST'])
+def ThirdInfo():
+    if request.method == 'POST':
+        city = request.form['city']
+        date = request.form['date']
+        query = f"""select hora,pronostico,temperatura,velocidad_viento,humedad
+        from datos_meteorologicos where ciudad = '{city}' and 
+        fecha = '{date}' and cast(hora as time) between time('13:00:00') and time('20:00:00');"""
+        data = database_query(query)
+        forecast = data[randint(0, 7)][1]
+    return render_template('third_info.html',city=city,date=date,forecast=forecast,weather=data)
 
 if __name__ == "__main__":
     app.run(port=3000,debug=True)
