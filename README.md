@@ -3,7 +3,8 @@
 Este repositorio contiene un proyecto Python Flask para visualizar datos climáticos de ciudades específicas.
 El proyecto lee los datos de un archivo CSV y utiliza Flask para construir una aplicación web que muestra los datos meteorológicos de las ciudades seleccionadas. Los usuarios pueden interactuar con la aplicación para ver las condiciones meteorológicas. El proyecto incluye herramientas de visualización para ayudar a los usuarios a comprender y analizar mejor los patrones climáticos en las ciudades del dataset.
 
-La aplicación está construida con el framework web Flask de Python y utiliza Bootstrap para el diseño de la interfaz de usuario.
+La aplicación está construida con el framework web Flask de Python y utiliza [Bootstrap](https://getbootstrap.com/) para el diseño de la interfaz de usuario.
+Tambien se hace uso de la libreria [Chart.js](https://www.chartjs.org/) para las gráficas dentro de la aplicación.
 
 ## Descarga del proyecto
 
