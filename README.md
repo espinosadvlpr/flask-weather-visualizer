@@ -37,7 +37,18 @@ pip install -r requirements.txt
 python upload_data.py
 ```
 Si todo funciona correctamente verá el mensaje `Data successfully charged to table datos_meteorologicos.`
- 
+
+5. En las primeras lineas del archivo `App.py` se debe cambiar la configuración de la base de datos para que se ejecute correctamente. La configuración que se debe cambiar es la siguiente:
+
+```
+app = Flask(__name__)
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = '[user]'
+app.config['MYSQL_PASSWORD'] = '[password]'
+app.config['MYSQL_DB'] = '[database_name]'
+mysql = MySQL(app)
+```
+
 ## Uso
 
 Para iniciar la aplicación, ejecute el siguiente comando en su terminal:
