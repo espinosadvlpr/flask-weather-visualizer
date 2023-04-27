@@ -84,10 +84,10 @@ Despues de dar en el botón **Comenzar** podemos empezar a navegar en cada una d
 
 ![image](https://user-images.githubusercontent.com/38819699/233887100-97c70f8c-de81-4f82-98e6-06790d911f79.png)
 
-**4. Gráfico de dispersión para una ciudad y una variable determinada.**
-- Primero se debe seleccionar la ciudad y la variable para la cual se desea revisar el gráfico de dispersión.
+**4. Gráfico de lineas para una ciudad y una variable determinada promediada por fecha.**
+- Primero se debe seleccionar la ciudad y la variable para la cual se desea revisar el gráfico de lineas.
 
-![image](https://user-images.githubusercontent.com/38819699/233887368-72709cd5-7f6d-42a1-89a2-65451ecc4365.png)
+![image](https://user-images.githubusercontent.com/38819699/234748329-76a9a5e3-c448-4e93-b1d7-2ae1ab25c3f1.png)
 
 - Despues de dar click en el botón **Ver Gráfico**, se nos dirige una pagina con el gráfico para la variable (promediada por fecha) y la ciudad seleccionadas.
 
@@ -97,6 +97,14 @@ Despues de dar en el botón **Comenzar** podemos empezar a navegar en cada una d
 
 ![image](https://user-images.githubusercontent.com/38819699/233888588-fbb126de-bed1-41b4-9231-ce812123a62d.png)
 
+**6. Gráfico de dispersión para una ciudad y una variable determinada.**
+- Primero se debe seleccionar la ciudad y la variable para la cual se desea revisar el gráfico de dispersión.
+
+![image](https://user-images.githubusercontent.com/38819699/234748812-56c4a5b3-05bc-4d2c-a98c-f7326d94df2a.png)
+
+- Despues de dar click en el botón **Ver Gráfico**, se nos dirige una pagina con el gráfico para la variable y la ciudad seleccionadas.
+
+![image](https://user-images.githubusercontent.com/38819699/234748992-f722f061-725e-4cc1-9f97-4fe1892ac036.png)
 
 ---
 `
