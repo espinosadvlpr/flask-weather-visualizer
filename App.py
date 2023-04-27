@@ -98,5 +98,25 @@ def Fifth():
                            barranquilla=barranquilla,bogota=bogota,
                            cartagena=cartagena,barranca=barranca)
 
+@app.route('/sixth')
+def Sixth():
+    cities = """select ciudad from datos_meteorologicos
+            group by ciudad;"""
+    cities_data = database_query(cities)
+    return render_template('sixth.html',cities=cities_data)
+
+@app.route('/sixth_chart',methods=['POST'])
+def SixthChart():
+    if request.method == 'POST':
+        city = request.form['city']
+        variable = request.form['variable']
+        query = f"""select row_number() over (order by ciudad), {variable}
+                    from datos_meteorologicos where ciudad = '{city}';"""
+        data = database_query(query)
+        labels = [row[0] for row in data]
+        values = [row[1] for row in data]
+        chart_title = variable.replace("_", " ").title()
+    return render_template('sixth_chart.html',city=city,title=chart_title,labels=labels,values=values)
+
 if __name__ == "__main__":
     app.run(port=3000,debug=True)
