@@ -1,0 +1,32 @@
+{% extends 'navbar.html' %} {% block body %}
+<div class="container-fluid">
+  <div class="p-4">
+    <h1>
+      Selecciona una ciudad y una variable para ver el gráfico de dispersión de
+      la variable.
+    </h1>
+  </div>
+  <form action="/sixth_chart" method="POST">
+    <div class="container mt-5">
+      <select class="form-select" name="city">
+        <option selected>Selecciona ciudad...</option>
+        {% for city in cities %}
+        <option value="{{city.0}}">{{city.0}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="container mt-4">
+      <select class="form-select" name="variable">
+        <option selected>Selecciona variable...</option>
+        <option value="temperatura">Temperatura</option>
+        <option value="velocidad_viento">Velocidad Viento</option>
+        <option value="precipitacion">Precipitación</option>
+        <option value="humedad">Humedad</option>
+      </select>
+    </div>
+    <div class="container mt-4">
+      <button type="submit" class="btn btn-dark">Ver gráfico</button>
+    </div>
+  </form>
+</div>
+{% endblock %}
